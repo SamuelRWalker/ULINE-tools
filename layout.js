@@ -2,12 +2,14 @@ import { TextGeometry } from "./vendor/three/examples/jsm/geometries/TextGeometr
 
 export const layoutDefaults = {
   plateWidthMm: 76.5,
-  plateHeightMm: 22.0,
+  plateHeightMm: 23.0,
   plateThicknessMm: 1.0,
   textDepthMm: 1.0,
   textEmbedMm: 0.0,
-  horizontalPaddingMm: 2.0,
-  verticalPaddingMm: 5.0,
+  paddingTopMm: 3.0,
+  paddingRightMm: 6.0,
+  paddingBottomMm: 6.0,
+  paddingLeftMm: 6.0,
   lineSpacingMm: 2.0,
 };
 
@@ -27,14 +29,22 @@ export function resetLayoutState() {
 
 export function getUsableWidth() {
   return (
-    layoutState.plateWidthMm - layoutState.horizontalPaddingMm * 2
+    layoutState.plateWidthMm - (layoutState.paddingLeftMm + layoutState.paddingRightMm)
   );
 }
 
 export function getUsableHeight() {
   return (
-    layoutState.plateHeightMm - layoutState.verticalPaddingMm * 2
+    layoutState.plateHeightMm - (layoutState.paddingTopMm + layoutState.paddingBottomMm)
   );
+}
+
+export function getHorizontalCenterOffset() {
+  return (layoutState.paddingLeftMm - layoutState.paddingRightMm) / 2;
+}
+
+export function getVerticalCenterOffset() {
+  return (layoutState.paddingBottomMm - layoutState.paddingTopMm) / 2;
 }
 
 export const DEFAULT_FONT_SIZE_TIERS = {

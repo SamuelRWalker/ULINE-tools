@@ -1,7 +1,7 @@
 import * as THREE from "./vendor/three/build/three.module.js";
 import { TextGeometry } from "./vendor/three/examples/jsm/geometries/TextGeometry.js";
 import { mergeGeometries } from "./vendor/three/examples/jsm/utils/BufferGeometryUtils.js";
-import { layoutState } from "./layout.js";
+import { layoutState, getHorizontalCenterOffset, getVerticalCenterOffset } from "./layout.js";
 import { repairGeometry } from "./repair-geometry.js";
 
 export function buildRoundedRectPlate({
@@ -96,5 +96,10 @@ export function buildTextGeometry({
 
   const merged = mergeGeometries(geometries, false);
   geometries.forEach((geo) => geo.dispose());
+  const offsetX = getHorizontalCenterOffset();
+  const offsetY = getVerticalCenterOffset();
+  if (offsetX || offsetY) {
+    merged.translate(offsetX, offsetY, 0);
+  }
   return repairGeometry(merged);
 }

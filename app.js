@@ -59,8 +59,10 @@ function cacheElements() {
     plateThicknessMm: document.getElementById("plate-thickness"),
     textDepthMm: document.getElementById("text-depth"),
     textEmbedMm: document.getElementById("text-embed"),
-    horizontalPaddingMm: document.getElementById("horizontal-padding"),
-    verticalPaddingMm: document.getElementById("vertical-padding"),
+    paddingTopMm: document.getElementById("padding-top"),
+    paddingRightMm: document.getElementById("padding-right"),
+    paddingBottomMm: document.getElementById("padding-bottom"),
+    paddingLeftMm: document.getElementById("padding-left"),
     lineSpacingMm: document.getElementById("line-spacing"),
   };
 
