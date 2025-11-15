@@ -67,6 +67,7 @@ function cacheElements() {
   elements.wedgeInputs = {
     baseLength: document.getElementById("wedge-base-length"),
     height: document.getElementById("wedge-height"),
+    tipHeight: document.getElementById("wedge-tip"),
     extrusionLength: document.getElementById("wedge-length"),
   };
 }
@@ -298,8 +299,8 @@ function buildLabelFilename(prefix) {
 }
 
 function buildWedgeFilename() {
-  const { baseLength, height, extrusionLength } = state.wedge;
-  const descriptor = `${baseLength}x${height}x${extrusionLength}`
+  const { baseLength, height, tipHeight, extrusionLength } = state.wedge;
+  const descriptor = `${baseLength}x${height}x${tipHeight}x${extrusionLength}`
     .replace(/\s+/g, "")
     .replace(/[^0-9x.]/g, "");
   return `wedge_${descriptor}`;
